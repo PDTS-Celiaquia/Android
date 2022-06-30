@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
 
-        HttpsURLConnection conexion = new Conexion().conectar();
 
 
 
         EditText email, password;
-        Button ingresar;
+        Button ingresar,registrar;
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         ingresar = findViewById(R.id.ingresar);
+        registrar = findViewById(R.id.registrarse);
 
         logIn login = new logIn();
 
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 JSONObject salida = new JSONObject();
-                String entrada;
 
                 try {
                     salida.put("email", email.getText().toString());
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 int cod = 5;
 
-                login.logear(conexion,salida);
+                login.logear(salida);
 
                 cod = login.getCodigo();
                 Toast toast;
@@ -78,8 +77,13 @@ public class MainActivity extends AppCompatActivity {
                         toast = Toast.makeText(getApplicationContext(), "Error inesperado "+cod, Toast.LENGTH_SHORT);
                 }
                 toast.show();
+            }
 
+        });
 
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
 

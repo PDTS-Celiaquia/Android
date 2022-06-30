@@ -8,7 +8,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.json.JSONObject;
 
-public class logIn {
+public class logIn{
 
 
     int codigo;
@@ -17,32 +17,29 @@ public class logIn {
         this.codigo = 0;
     }
 
-    public void logear(HttpsURLConnection conexion, JSONObject salida) {
+    public void logear(JSONObject salida) {
         Runnable hilo = () -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                OutputStream os = null;
-
-                try {
-                    os = conexion.getOutputStream();
-                    os.write(salida.toString().getBytes("UTF-8"));
-                    os.close();
-                    // read the response
-                    setCodigo(conexion.getResponseCode());
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            OutputStream os = null;
+            try {
+                HttpsURLConnection conexion = new Conexion().conectar();
+                os = conexion.getOutputStream();
+                os.write(salida.toString().getBytes("UTF-8"));
+                os.close();
+                // read the response
+                this.setCodigo(conexion.getResponseCode());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         };
         Thread run = new Thread(hilo);
         run.start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        run.interrupt();
+        try{
+            run.join();
+        }catch(Exception ex){}
+       // while(run.isAlive()){}
+
     }
+
 
     public int getCodigo() {
         return codigo;
