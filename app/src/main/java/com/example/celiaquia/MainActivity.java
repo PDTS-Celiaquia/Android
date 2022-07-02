@@ -29,47 +29,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, logInView.class);
         startActivity(i);
 
-
-/*
-        Button ingresar,registrar;
-
-
-        ingresar = findViewById(R.id.ingresar);
-        registrar = findViewById(R.id.registrarse);
-
-        logIn login = new logIn();
-*//*
-//configura lo que se hace cuando se toca ingresar
-        ingresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-                login.logear();
-
-
-            }
-
-        });
-*/
-        /*registrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.register);
-                //Button registrar2 = findViewById();
-
-            }
-        });
-
-        registrar2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.register);
-                Button registrar2 = findViewById(R.id.registrarse);
-
-            }
-        });*/
     }
 }
 

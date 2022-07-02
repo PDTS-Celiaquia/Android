@@ -31,8 +31,6 @@ public class logIn extends Activity {
 
     public void logear(EditText email, EditText password){
 
-
-
         JSONObject salida = new JSONObject();
         try {
             salida.put("email", email.getText().toString());

@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".logIn.logInView"></activity>
+        <activity android:name=".registro.registroView"></activity>
     </application>
 
 </manifest>
