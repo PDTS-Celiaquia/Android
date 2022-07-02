@@ -63,7 +63,8 @@
             android:id="@+id/ingresar"
             android:layout_width="276dp"
             android:layout_height="48dp"
-            android:backgroundTint="@android:color/holo_orange_light"
+            android:background="@color/grisclarito"
+            android:clickable="false"
             android:text="Ingresar"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +72,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-            app:layout_constraintVertical_bias="0.7" />
+            app:layout_constraintVertical_bias="0.7"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/registrarse"

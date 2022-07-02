@@ -77,7 +77,7 @@
             android:id="@+id/registrarse"
             android:layout_width="276dp"
             android:layout_height="48dp"
-            android:backgroundTint="@android:color/holo_orange_light"
+            android:background="@color/grisclarito"
             android:text="Registrarse"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
