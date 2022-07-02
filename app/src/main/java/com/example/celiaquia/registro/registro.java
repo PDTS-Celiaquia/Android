@@ -16,6 +16,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class registro extends AppCompatActivity {
     int codigo;
+    String mensaje;
 
     public registro() {
         this.codigo = 0;
@@ -35,11 +36,12 @@ public class registro extends AppCompatActivity {
         Runnable hilo = () -> {
             OutputStream os = null;
             try {
-                HttpsURLConnection conexion = new Conexion().conectar();
+                HttpsURLConnection conexion = new Conexion().conectar("registro");
                 os = conexion.getOutputStream();
                 os.write(salida.toString().getBytes("UTF-8"));
                 os.close();
                 // read the response
+                this.setMensaje(conexion.getResponseMessage());
                 this.setCodigo(conexion.getResponseCode());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,4 +63,8 @@ public class registro extends AppCompatActivity {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    public String getMensaje() {if (mensaje == null) return "Null"; else return mensaje;}
+
+    public void setMensaje(String mensaje) {this.mensaje = mensaje; }
 }

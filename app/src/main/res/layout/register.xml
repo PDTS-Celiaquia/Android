@@ -44,7 +44,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordr"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:autofillHints=""
@@ -59,14 +59,14 @@
             app:layout_constraintVertical_bias="0.9" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/emailr"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:ems="10"
             android:hint="Ingrese su email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintBottom_toTopOf="@+id/passwordr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
             android:ems="10"
             android:hint="Apellido"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/emailr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"

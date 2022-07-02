@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.celiaquia.R;
-import com.example.celiaquia.logIn.logIn;
 import com.example.celiaquia.registro.registroView;
 
 public class logInView extends Activity {
@@ -33,13 +32,13 @@ public class logInView extends Activity {
                 Toast toast;
                 switch (login.getCodigo()){
                     case(200):
-                        toast = Toast.makeText(getApplicationContext(), "ingreso con exito", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(getApplicationContext(), "Ingreso con exito", Toast.LENGTH_SHORT);
                         break;
                     case(401):
                         toast = Toast.makeText(getApplicationContext(), "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT);
                         break;
                     default:
-                        toast = Toast.makeText(getApplicationContext(), "Error inesperado "+login.getCodigo(), Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(getApplicationContext(), "Error inesperado - "+login.getCodigo()+" - "+login.getMensaje(), Toast.LENGTH_SHORT);
                 }
                 toast.show();
             }

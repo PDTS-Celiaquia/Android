@@ -12,13 +12,13 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Conexion {
 
-    public HttpsURLConnection conectar() {
+    public HttpsURLConnection conectar(String ruta) {
 
        // Runnable hilo = () -> {
             HttpsURLConnection hpCon = null;
 
             try {
-                URL hp = new URL("https://springceliaquia.herokuapp.com/api/usuario/");
+                URL hp = new URL("https://springceliaquia.herokuapp.com/api/usuario/" + ruta);
 
                 hpCon = (HttpsURLConnection) hp.openConnection();
 
