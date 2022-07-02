@@ -1,23 +1,25 @@
 package com.example.celiaquia;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.net.ssl.HttpsURLConnection;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
-public class logIn{
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.net.ssl.HttpsURLConnection;
+
+public class registro extends AppCompatActivity {
 
 
     int codigo;
 
-    public logIn() {
+    public registro() {
         this.codigo = 0;
     }
 
-    public void logear(JSONObject salida) {
+    public void registrar() {
+/*
         Runnable hilo = () -> {
             OutputStream os = null;
             try {
@@ -36,7 +38,7 @@ public class logIn{
         try{
             run.join();
         }catch(Exception ex){}
-       // while(run.isAlive()){}
+       // while(run.isAlive()){}*/
 
     }
 

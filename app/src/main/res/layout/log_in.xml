@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +42,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.298" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="273dp"
+            android:layout_height="74dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Ingrese su contraseña"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
 
         <Button
             android:id="@+id/ingresar"
@@ -72,17 +88,5 @@
             app:layout_constraintVertical_bias="0.84000003" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="273dp"
-        android:layout_height="74dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Ingrese su contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_anchor="@+id/constraintLayout"
-        app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

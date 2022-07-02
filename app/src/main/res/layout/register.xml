@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="409dp"
+        android:layout_height="729dp">
+
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/apellido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="0.8" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -30,33 +45,33 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="262dp"
-            android:layout_height="69dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="Ingrese su contraseña"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/registrarse"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.456"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.567" />
+            app:layout_constraintVertical_bias="0.9" />
 
         <EditText
             android:id="@+id/email"
-            android:layout_width="277dp"
-            android:layout_height="67dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:ems="10"
             android:hint="Ingrese su email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/password"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.421" />
+            app:layout_constraintVertical_bias="0.8" />
 
         <Button
             android:id="@+id/registrarse"
@@ -74,32 +89,18 @@
 
         <EditText
             android:id="@+id/apellido"
-            android:layout_width="268dp"
-            android:layout_height="53dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:ems="10"
             android:hint="Apellido"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/email"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-            app:layout_constraintVertical_bias="0.25" />
-
-        <EditText
-            android:id="@+id/nombre"
-            android:layout_width="264dp"
-            android:layout_height="57dp"
-            android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.462"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.149" />
+            app:layout_constraintVertical_bias="0.8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
