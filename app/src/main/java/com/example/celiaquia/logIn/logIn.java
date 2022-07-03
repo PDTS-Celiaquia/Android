@@ -20,16 +20,15 @@ import org.json.JSONObject;
 import com.example.celiaquia.R;
 
 public class logIn extends Activity {
-    int codigo;
+    private int codigo;
 
-    String mensaje;
+    private String mensaje;
 
     public logIn() {
         this.codigo = 0;
     }
 
     public void logear(EditText email, EditText password){
-
         JSONObject salida = new JSONObject();
         try {
             salida.put("email", email.getText().toString());
@@ -44,9 +43,8 @@ public class logIn extends Activity {
                 os = conexion.getOutputStream();
                 os.write(salida.toString().getBytes("UTF-8"));
                 os.close();
-                // read the response
-                this.setMensaje(conexion.getResponseMessage());
-                this.setCodigo(conexion.getResponseCode());
+                this.mensaje = conexion.getResponseMessage();
+                this.codigo = conexion.getResponseCode();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,16 +59,9 @@ public class logIn extends Activity {
 
     }
 
-
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getMensaje() {if (mensaje == null) return "Null"; else return mensaje;}
-
-    public void setMensaje(String mensaje) {this.mensaje = mensaje; }
+    public String getMensaje() {if (mensaje == null) return "NULL"; else return mensaje;}
 }

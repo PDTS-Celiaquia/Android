@@ -15,15 +15,14 @@ import java.io.OutputStream;
 import javax.net.ssl.HttpsURLConnection;
 
 public class registro extends AppCompatActivity {
-    int codigo;
-    String mensaje;
+    private int codigo;
+    private String mensaje;
 
     public registro() {
         this.codigo = 0;
     }
 
     public void registrar(EditText nombre, EditText apellido, EditText email, EditText pass) {
-
         JSONObject salida = new JSONObject();
         try {
             salida.put("nombre", nombre.getText().toString());
@@ -40,9 +39,8 @@ public class registro extends AppCompatActivity {
                 os = conexion.getOutputStream();
                 os.write(salida.toString().getBytes("UTF-8"));
                 os.close();
-                // read the response
-                this.setMensaje(conexion.getResponseMessage());
-                this.setCodigo(conexion.getResponseCode());
+                this.mensaje = conexion.getResponseMessage();
+                this.codigo = conexion.getResponseCode();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -55,16 +53,9 @@ public class registro extends AppCompatActivity {
 
     }
 
-
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getMensaje() {if (mensaje == null) return "Null"; else return mensaje;}
-
-    public void setMensaje(String mensaje) {this.mensaje = mensaje; }
+    public String getMensaje() {if (mensaje == null) return "NULL"; else return mensaje;}
 }

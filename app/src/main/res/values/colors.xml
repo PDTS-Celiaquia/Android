@@ -10,4 +10,6 @@
     <color name="gris">#3C3F41</color>
     <color name="grisclarito">#C5C7C9</color>
     <color name="naranja">#FFBB33</color>
+    <color name="rojo">#F44336</color>
+    <color name="verde">#8BC34A</color>
 </resources>

@@ -10,20 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.celiaquia.R;
+import com.example.celiaquia.util.Botones;
+
+import java.util.regex.Pattern;
 
 public class registroView extends Activity {
-    EditText email, password,nombre,apellido;
-    boolean emailValidado = false, passValidada = false, nombreValidado = false, apellidoValidado = false;
-
-    private void apagarBoton(Button boton) {
-        boton.setClickable(false);
-        boton.setBackgroundColor(getResources().getColor(R.color.grisclarito));
-    }
-
-    private void prenderBoton(Button boton, View.OnClickListener listener) {
-        boton.setOnClickListener(listener);
-        boton.setBackgroundColor(getResources().getColor(R.color.naranja));
-    }
+    private EditText email, password,nombre,apellido;
+    private boolean emailValid = false, passValid = false, nombreValid = false, apellidoValid = false;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +36,7 @@ public class registroView extends Activity {
 
                 Toast toast;
                 switch (reg.getCodigo()){
+                    //PUEDEN FALTAR CÓDIGOS POSIBLES
                     case(200):
                         toast = Toast.makeText(getApplicationContext(), "Ingreso con éxito", Toast.LENGTH_SHORT);
                         break;
@@ -53,24 +47,73 @@ public class registroView extends Activity {
             }
         };
 
+        //Validación de nombre
+        nombre.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s != null && s.length() > 0 && !Pattern.compile("[^a-zA-Zá-úÁ-Ú\\s]").matcher(s).find()) //ACÁ AGREGAR CONDICIONES PARA NOMBRE
+                {
+                    //nombre válido, activar botón Registrar y poner campo en verde
+                    nombreValid = true;
+                    if (emailValid && passValid && apellidoValid) {
+                        Botones.activar(registrar,clickListenerRegistrar);
+                    }
+                } else {
+                    //nombre inválido, apagar botón Registrar y poner campo en rojo
+                    nombreValid = false;
+                    Botones.desactivar(registrar);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        //Validación de apellido
+        apellido.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s != null && s.length() > 0 && !Pattern.compile("[^a-zA-Zá-úÁ-Ú\\s]").matcher(s).find()) //ACÁ AGREGAR CONDICIONES PARA APELLIDO (mayus, minus, etc.)
+                {
+                    //apellido válido, activar botón Registrar y poner campo en verde
+                    apellidoValid = true;
+                    if (emailValid && nombreValid && passValid) {
+                        Botones.activar(registrar,clickListenerRegistrar);
+                    }
+                } else {
+                    //apellido inválido, apagar botón Registrar y poner campo en rojo
+                    apellidoValid = false;
+                    Botones.desactivar(registrar);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
         //Validación de email
         email.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s != null && android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches())
                 {
-                    //email valido, activar boton ingresar y poner campo en verde
-                    emailValidado = true;
-                    if (passValidada && nombreValidado && apellidoValidado)
-                        prenderBoton(registrar,clickListenerRegistrar);
+                    //email válido, activar botón Registrar y poner campo en verde
+                    emailValid = true;
+                    if (passValid && nombreValid && apellidoValid)
+                        Botones.activar(registrar,clickListenerRegistrar);
                 } else {
-                    //email invalido, apagar boton ingresar y poner campo en rojo
-                    emailValidado = false;
-                    apagarBoton(registrar);
+                    //email inválido, apagar botón Registrar y poner campo en rojo
+                    emailValid = false;
+                    Botones.desactivar(registrar);
                 }
             }
 
@@ -90,71 +133,15 @@ public class registroView extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s != null && s.length() > 0) //ACÁ AGREGAR CONDICIONES PARA CONTRASEÑA (mayus, minus, etc.)
                 {
-                    //pass valida, activar boton ingresar y poner campo en verde
-                    passValidada = true;
-                    if (emailValidado && nombreValidado && apellidoValidado) {
-                        prenderBoton(registrar,clickListenerRegistrar);
+                    //pass válida, activar botón Registrar y poner campo en verde
+                    passValid = true;
+                    if (emailValid && nombreValid && apellidoValid) {
+                        Botones.activar(registrar,clickListenerRegistrar);
                     }
                 } else {
-                    //pass invalida, apagar boton ingresar y poner campo en rojo
-                    passValidada = false;
-                    apagarBoton(registrar);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        //Validación de nombre
-        nombre.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s != null && s.length() > 0) //ACÁ AGREGAR CONDICIONES PARA NOMBRE
-                {
-                    //nombre valido, activar boton ingresar y poner campo en verde
-                    nombreValidado = true;
-                    if (emailValidado && passValidada && apellidoValidado) {
-                        prenderBoton(registrar,clickListenerRegistrar);
-                    }
-                } else {
-                    //nombre invalido, apagar boton ingresar y poner campo en rojo
-                    nombreValidado = false;
-                    apagarBoton(registrar);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        //Validación de apellido
-        apellido.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s != null && s.length() > 0) //ACÁ AGREGAR CONDICIONES PARA APELLIDO (mayus, minus, etc.)
-                {
-                    //apellido valido, activar boton ingresar y poner campo en verde
-                    apellidoValidado = true;
-                    if (emailValidado && nombreValidado && passValidada) {
-                        prenderBoton(registrar,clickListenerRegistrar);
-                    }
-                } else {
-                    //apellido invalido, apagar boton ingresar y poner campo en rojo
-                    apellidoValidado = false;
-                    apagarBoton(registrar);
+                    //pass inválida, apagar botón Registrar y poner campo en rojo
+                    passValid = false;
+                    Botones.desactivar(registrar);
                 }
             }
 
