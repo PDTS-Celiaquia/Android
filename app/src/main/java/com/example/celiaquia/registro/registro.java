@@ -53,6 +53,9 @@ public class registro extends AppCompatActivity {
 
     }
 
+    /* @Author
+    *
+    * */
     public int getCodigo() {
         return codigo;
     }

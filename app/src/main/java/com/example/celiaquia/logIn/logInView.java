@@ -35,9 +35,11 @@ public class logInView extends Activity {
 
                 Toast toast;
                 switch (login.getCodigo()){
-                    //PUEDEN FALTAR C√ìDIGOS POSIBLES
                     case(200):
-                        toast = Toast.makeText(getApplicationContext(), "Ingreso con √©xito", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(getApplicationContext(), "Ingreso con Èxito", Toast.LENGTH_SHORT);
+                        break;
+                    case(401):
+                        toast = Toast.makeText(getApplicationContext(), "Email y/o contraseÒa inv·lidos.", Toast.LENGTH_SHORT);
                         break;
                     default:
                         toast = Toast.makeText(getApplicationContext(), "Error inesperado - "+login.getCodigo()+" - "+login.getMensaje(), Toast.LENGTH_SHORT);
@@ -46,7 +48,7 @@ public class logInView extends Activity {
             }
         };
 
-        //Validaci√≥n de email
+        //ValidaciÛn de email
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -55,12 +57,12 @@ public class logInView extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s != null && android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches())
                 {
-                    //email v√°lido, activar bot√≥n Ingresar y poner campo en verde
+                    //email v·lido, activar botÛn Ingresar y poner campo en verde
                     emailValid = true;
                     if (passValid)
                         Botones.activar(ingresar,clickListenerIngresar);
                 } else {
-                    //email inv√°lido, apagar bot√≥n Ingresar y poner campo en rojo
+                    //email inv·lido, apagar botÛn Ingresar y poner campo en rojo
                     emailValid = false;
                     Botones.desactivar(ingresar);
                 }
@@ -70,21 +72,21 @@ public class logInView extends Activity {
             public void afterTextChanged(Editable s) {}
         });
 
-        //Validaci√≥n de contrase√±a
+        //ValidaciÛn de contraseÒa
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s != null && s.length() > 0) //AC√Å AGREGAR CONDICIONES PARA CONTRASE√ëA (mayus, minus, etc.)
+                if (s != null && s.length() > 0) //AC¡ AGREGAR CONDICIONES PARA CONTRASE—A (mayus, minus, etc.)
                 {
-                    //pass v√°lida, activar bot√≥n Ingresar y poner campo en verde
+                    //pass v·lida, activar botÛn Ingresar y poner campo en verde
                     passValid = true;
                     if (emailValid)
                         Botones.activar(ingresar,clickListenerIngresar);
                 } else {
-                    //pass inv√°lida, apagar bot√≥n Ingresar y poner campo en rojo
+                    //pass inv·lida, apagar botÛn Ingresar y poner campo en rojo
                     passValid = false;
                     Botones.desactivar(ingresar);
                 }
